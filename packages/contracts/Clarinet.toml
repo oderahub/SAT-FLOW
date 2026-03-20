@@ -1,0 +1,21 @@
+[project]
+name = "sat-flow-contracts"
+authors = ["OpenAI Codex"]
+description = "SAT-FLOW v1.0-USDCx vault contract"
+telemetry = false
+cache_dir = "./.cache"
+requirements = []
+
+[contracts.sat-flow-vault]
+path = "contracts/sat-flow-vault.clar"
+clarity_version = 2
+epoch = "3.0"
+
+[contracts.mock-usdcx]
+path = "contracts/mock-usdcx.clar"
+clarity_version = 2
+epoch = "3.0"
+
+[repl.analysis]
+passes = ["check_checker"]
+check_checker = { trusted_sender = true, trusted_caller = false, callee_filter = false }

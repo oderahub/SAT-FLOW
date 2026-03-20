@@ -1,0 +1,33 @@
+{
+  "name": "sat-flow",
+  "private": true,
+  "version": "1.0.0",
+  "type": "module",
+  "workspaces": [
+    "packages/*"
+  ],
+  "scripts": {
+    "prepare:testnet": "node scripts/prepare-testnet-settings.mjs",
+    "merchant:serve": "node packages/merchant/src/index.js",
+    "merchant:smoke": "node packages/merchant/src/smoke-client.js",
+    "test:contracts": "clarinet check --manifest-path packages/contracts/Clarinet.toml --use-computed-deployment-plan",
+    "check:contracts": "clarinet check --manifest-path packages/contracts/Clarinet.toml --use-computed-deployment-plan",
+    "test:runtime": "node --test packages/contracts/test/*.test.js packages/shared/test/*.test.js packages/sdk/test/*.test.js packages/mcp/test/*.test.js packages/cli/test/*.test.js packages/merchant/test/*.test.js",
+    "test": "npm run test:contracts && npm run test:runtime"
+  },
+  "devDependencies": {
+    "@stacks/clarinet-sdk": "^3.15.1",
+    "@stacks/transactions": "^7.3.1",
+    "@types/node": "^25.5.0",
+    "typescript": "^5.9.3",
+    "vitest": "^4.1.0",
+    "vitest-environment-clarinet": "^3.0.2"
+  },
+  "dependencies": {
+    "@stacks/bns": "^7.2.0",
+    "@stacks/wallet-sdk": "^7.2.0",
+    "axios": "^1.13.6",
+    "express": "^4.22.1",
+    "x402-stacks": "^2.0.1"
+  }
+}

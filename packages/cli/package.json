@@ -1,0 +1,8 @@
+{
+  "name": "@sat-flow/cli",
+  "version": "1.0.0",
+  "type": "module",
+  "bin": {
+    "sat-flow": "./src/index.js"
+  }
+}

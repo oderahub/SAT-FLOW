@@ -1,0 +1,10 @@
+{
+  "version": 1,
+  "skills": {
+    "x402-stacks": {
+      "source": "x402Stacks/x402stacks-skill",
+      "sourceType": "github",
+      "computedHash": "7b841a012f5f78cd13282314c8fa785227449799b50f2d1c792c66fcfa17e73c"
+    }
+  }
+}

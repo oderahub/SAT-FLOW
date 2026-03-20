@@ -1,0 +1,4 @@
+.env
+node_modules
+packages/contracts/settings/Testnet.toml
+docs/ 
