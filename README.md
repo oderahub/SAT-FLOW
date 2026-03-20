@@ -24,7 +24,7 @@ The repo now also proves full live x402 merchant paths end to end:
 Proven assets:
 
 - `STX`
-- `USDCx` via `mock-usdcx` on testnet
+- real bridged testnet `USDCx`
 
 ## Why this repo exists
 
@@ -99,10 +99,10 @@ The working live proof path today is:
 
 - local facilitator on `http://localhost:8089`
 - local STX merchant on `http://127.0.0.1:4021/api/premium-data`
-- local mock-USDCx merchant on `http://127.0.0.1:4023/api/premium-data`
+- local bridged-USDCx merchant on `http://127.0.0.1:4024/api/premium-data`
 - SAT-FLOW CLI commands:
   - `node packages/cli/src/index.js pay-merchant-live http://127.0.0.1:4021/api/premium-data "Test SAT-FLOW merchant payment"`
-  - `node packages/cli/src/index.js pay-merchant-live http://127.0.0.1:4023/api/premium-data "Test SAT-FLOW USDCx merchant payment"`
+  - `node packages/cli/src/index.js pay-merchant-live http://127.0.0.1:4024/api/premium-data "Real SAT-FLOW USDCx merchant payment"`
 
 ## CLI demo flows
 
@@ -124,7 +124,7 @@ The working live proof path today is:
   - `node packages/cli/src/index.js pay-live USDCX 1050000 merchant.btc "Need the premium dataset" https://merchant.test/invoice`
 - Live merchant-issued 402 payment flow:
   - `node packages/cli/src/index.js pay-merchant-live http://127.0.0.1:4021/api/premium-data "Test SAT-FLOW merchant payment"`
-  - `node packages/cli/src/index.js pay-merchant-live http://127.0.0.1:4023/api/premium-data "Test SAT-FLOW USDCx merchant payment"`
+  - `node packages/cli/src/index.js pay-merchant-live http://127.0.0.1:4024/api/premium-data "Real SAT-FLOW USDCx merchant payment"`
 
 Required env for live flows:
 
@@ -235,10 +235,10 @@ Defaults:
 
 USDCx merchant example:
 
-- port: `4023`
+- port: `4024`
 - token type: `USDCx`
-- token contract: `ST2FY55DK4NESNH6E5CJSNZP2CQ5PZ5BX65KWG39S.mock-usdcx`
-- resource: `http://127.0.0.1:4023/api/premium-data`
+- token contract: `ST1PQHQKV0RJXZFY1DGX8MNSNYVE3VGZJSRTPGZGM.usdcx`
+- resource: `http://127.0.0.1:4024/api/premium-data`
 
 This control path is intentionally separate from the SAT-FLOW CLI. SAT-FLOW still owns treasury policy, memo anchoring, and post-settlement accounting. The merchant package exists to prove the standard `x402-stacks` server/client path in the same repo.
 
@@ -265,17 +265,17 @@ Confirmed SAT-FLOW live merchant payments:
 
 - `0x71a65fa4f1e97c8553e5b5f2291978be642186f6309ec616917c64c81c0283c0`
 - `0x791c2f5cbdd78805708c62bc48796f2efe7f79a3a21118747a6c6b9e23a0465e`
-- `0x004798657696870ff7e109e50ee0dcd7fcc2afa594e6bee242c0c8a60c564976` (`mock-usdcx`)
+- `0xe11d1feb63fd0daa88e0bfd12c7362843f2012316bf732cce5e7a505f83c1d44` (real bridged `usdcx`)
 
 Confirmed upstream merchant smoke payment:
 
 - `0x914d81882a057971c4a19ee026270e44a8d5140f2ec6b40e4f1961c3a33ffa92`
-- `0x2fea63245239112e7eecf18e2098e2d5747dfac96b7e32ce9965348aaa4ed4bc` (`mock-usdcx`)
+- `0x6a734d84bc0e0af5d506e0e20d11ee11aa8a4be3dfd9cd81c0f03a6a6e2b166d` (real bridged `usdcx`)
 
 USDCx proof note:
 
-- the proven USDCx merchant path currently uses `mock-usdcx` on testnet
-- the remaining step to make it fully Circle-aligned is swapping the merchant token contract from `mock-usdcx` to bridged testnet `usdcx`
+- the real bridged testnet `usdcx` merchant path is now proven end to end
+- the earlier `mock-usdcx` path remains useful as a local SIP-010 regression path, but it is no longer the strongest proof state
 
 Identity caveat:
 
